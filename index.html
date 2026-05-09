@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Para la mujer más increíble — Día de las Madres</title>
+  <meta name="theme-color" content="#1b0407">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg-1:#190306;
+      --bg-2:#2a0610;
+      --bg-3:#4d0d16;
+      --glass: rgba(20, 0, 0, 0.42);
+      --glass-strong: rgba(24, 3, 7, 0.62);
+      --line: rgba(255, 208, 171, 0.16);
+      --line-strong: rgba(255, 188, 138, 0.28);
+      --cream:#fff4ea;
+      --gold:#f4c97a;
+      --rose:#ff8c73;
+      --shadow-red: 0 30px 90px rgba(115, 7, 22, 0.48);
+      --shadow-soft: 0 18px 50px rgba(0, 0, 0, 0.28);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--cream);
+      font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(252, 120, 128, 0.16), transparent 22%),
+        radial-gradient(circle at 80% 12%, rgba(255, 214, 160, 0.12), transparent 18%),
+        radial-gradient(circle at 50% 100%, rgba(146, 19, 33, 0.42), transparent 40%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2) 48%, var(--bg-3));
+      overflow-x:hidden;
+    }
+    body::before,
+    body::after{
+      content:'';
+      position:fixed;
+      inset:auto;
+      border-radius:50%;
+      pointer-events:none;
+      z-index:0;
+      filter: blur(24px);
+      opacity:.4;
+      animation: drift 18s ease-in-out infinite alternate;
+    }
+    body::before{width:360px;height:360px;top:-120px;left:-140px;background:radial-gradient(circle, rgba(255,155,130,.32), transparent 68%)}
+    body::after{width:420px;height:420px;right:-170px;bottom:10px;background:radial-gradient(circle, rgba(255,204,129,.18), transparent 70%);animation-duration:22s}
+    @keyframes drift{
+      from{transform:translate3d(0,0,0) scale(1)}
+      to{transform:translate3d(24px,18px,0) scale(1.08)}
+    }
+    #particles-js{
+      position:fixed;
+      inset:0;
+      z-index:0;
+      pointer-events:none;
+      opacity:.9;
+    }
+    .noise{
+      position:fixed;
+      inset:0;
+      z-index:1;
+      pointer-events:none;
+      background-image:
+        radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        radial-gradient(rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 3px 3px, 7px 7px;
+      mix-blend-mode:soft-light;
+      opacity:.18;
+    }
+    .wrap{position:relative;z-index:2}
+    .container{width:min(1180px, calc(100vw - 32px));margin:0 auto}
+
+    /* Hero Ajustado */
+    .hero{
+      min-height:100vh;
+      display:grid;
+      place-items:center;
+      padding:28px 0 54px;
+      position:relative;
+    }
+    .hero__card{
+      width:100%;
+      position:relative;
+      padding:60px 34px 50px; /* Un poco más de aire */
+      border-radius:32px;
+      background:linear-gradient(180deg, rgba(33, 3, 9, 0.74), rgba(14, 2, 5, 0.5));
+      border:1px solid rgba(255, 206, 170, 0.15);
+      box-shadow:var(--shadow-red), inset 0 1px 0 rgba(255,255,255,.06);
+      backdrop-filter: blur(20px); /* Efecto cristal premium */
+      -webkit-backdrop-filter: blur(20px); /* Soporte para Safari en iPhone */
+      overflow:hidden;
+      text-align: center; /* Centramos el texto al quitar la imagen lateral */
+    }
+    .hero__card::before{
+      content:'';
+      position:absolute;
+      inset:-2px;
+      background:linear-gradient(135deg, rgba(255, 112, 92, 0.14), transparent 28%, rgba(244,201,122,0.12) 70%, transparent);
+      opacity:.8;
+      pointer-events:none;
+    }
+    .hero__inner{
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .hero__eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(244,201,122,.22);
+      background:rgba(255,255,255,.05);
+      color:var(--gold);
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-weight:700;
+    }
+    .hero__title{
+      margin:16px 0 14px;
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(3rem, 8vw, 5.5rem);
+      line-height:.94;
+      letter-spacing:-.03em;
+      color:#fff7ef;
+      text-wrap:balance;
+    }
+    .hero__copy{
+      max-width:640px;
+      margin:0 auto;
+      font-size:1.04rem;
+      line-height:1.9;
+      color:rgba(255,242,232,.88);
+    }
+    .hero__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px}
+    .btn{
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      border-radius:999px;
+      padding:14px 24px;
+      font-weight:800;
+      letter-spacing:.01em;
+      transition:transform .22s ease, box-shadow .22s ease, background .22s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      font-size: 1rem;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn--primary{
+      color:#2a0308;
+      background:linear-gradient(135deg, #ffe9cf, #f8bf70 56%, #ffcfc2);
+      box-shadow:0 18px 34px rgba(244, 201, 122, .15);
+    }
+    .btn--ghost{
+      color:var(--cream);
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    
+    .music{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:5;
+      border-radius:999px;
+      padding:10px 14px;
+      color:#fff2e4;
+      background:rgba(25, 4, 8, .58);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 18px 40px rgba(0,0,0,.34);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .music button{border:0;background:transparent;color:var(--gold);font-weight:800;cursor:pointer; font-size: 0.9rem;}
+
+    .story{padding:6px 0 92px;position:relative;z-index:2}
+    .scene{
+      position:relative;
+      margin:0 auto 32px;
+      width:min(1180px, calc(100vw - 32px));
+      min-height: clamp(540px, 82vh, 860px);
+      display:grid;
+      align-items:center;
+    }
+    .scene__grid{
+      display:grid;
+      grid-template-columns: 1fr 1.08fr;
+      gap:20px;
+      align-items:center;
+    }
+    .scene--alt .scene__grid{grid-template-columns: 1.08fr 1fr}
+    .scene__copy,
+    .scene__media{
+      position:relative;
+    }
+    .glass{
+      background:var(--glass);
+      border:1px solid rgba(255,255,255,.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius:30px;
+      box-shadow:var(--shadow-red), inset 0 1px 0 rgba(255,255,255,.05);
+    }
+    .scene__copy{
+      padding:34px 28px;
+      max-width:560px;
+      z-index:2;
+    }
+    .scene__copy--overlap{margin-left: clamp(0px, 1vw, 12px)}
+    .scene__tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(244,201,122,.18);
+      color:#ffe5c0;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.74rem;
+      font-weight:800;
+      background:rgba(255,255,255,.04);
+    }
+    .scene__title{
+      margin:16px 0 12px;
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2.1rem, 4vw, 3.6rem);
+      line-height:.96;
+      color:#fff8f0;
+    }
+    .scene__text{
+      margin:0;
+      color:rgba(255,244,234,.9);
+      line-height:1.95;
+      font-size:1.02rem;
+    }
+
+    .cluster{
+      position:relative;
+      min-height: min(74vh, 720px);
+    }
+    .tile{
+      position:absolute;
+      overflow:hidden;
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      box-shadow:0 24px 56px rgba(0,0,0,.34);
+      transform-style:preserve-3d;
+      will-change:transform;
+    }
+    .tile img{display:block;width:100%;height:100%;object-fit:cover}
+    .tile::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, transparent 60%, rgba(0,0,0,.08));
+      pointer-events:none;
+    }
+    .tile--lg{width:58%;height:58%;left:0;top:7%}
+    .tile--md{width:44%;height:46%;right:4%;top:0}
+    .tile--sm{width:42%;height:40%;left:18%;bottom:2%}
+    .tile--xs{width:34%;height:34%;right:12%;bottom:14%}
+    .tile--wide{width:70%;height:44%;left:10%;top:24%}
+    .tile--tall{width:36%;height:58%;right:0;top:14%}
+
+    .closing{
+      width:min(1180px, calc(100vw - 32px));
+      margin:0 auto;
+      padding:40px 0 120px;
+      text-align:center;
+    }
+    .closing__line{
+      margin:0 auto 18px;
+      max-width:780px;
+      color:rgba(255,243,232,.9);
+      line-height:1.9;
+      font-size:1.05rem;
+    }
+    .closing__title{
+      margin:0;
+      font-family:'Cormorant Garamond',serif;
+      font-size:clamp(2.8rem, 7vw, 5.2rem);
+      line-height:.92;
+      color:#fff4eb;
+      text-shadow:0 0 28px rgba(255, 154, 120, .2);
+    }
+
+    .reveal{opacity:0;transform:translateY(24px) scale(.985)}
+
+    /* Floating Hearts */
+    .floating-hearts {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .heart {
+      position: absolute;
+      font-size: 2rem;
+      opacity: 0.35;
+      color: rgba(255, 140, 115, 0.5);
+      animation: float-up linear infinite;
+      text-shadow: 0 0 12px rgba(244, 201, 122, 0.25);
+    }
+    @keyframes float-up {
+      0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg) scale(1);
+        opacity: 0.35;
+      }
+      50% {
+        opacity: 0.55;
+      }
+      100% {
+        transform: translateY(-100vh) translateX(100px) rotate(720deg) scale(0.3);
+        opacity: 0;
+      }
+    }
+    .heart:nth-child(1) { left: 8%; animation-duration: 12s; animation-delay: 0s; }
+    .heart:nth-child(2) { left: 15%; animation-duration: 14s; animation-delay: 1s; }
+    .heart:nth-child(3) { left: 22%; animation-duration: 13s; animation-delay: 2s; }
+    .heart:nth-child(4) { left: 35%; animation-duration: 15s; animation-delay: 3s; }
+    .heart:nth-child(5) { left: 48%; animation-duration: 16s; animation-delay: 4s; }
+    .heart:nth-child(6) { left: 62%; animation-duration: 14s; animation-delay: 5s; }
+    .heart:nth-child(7) { left: 75%; animation-duration: 12s; animation-delay: 6s; }
+    .heart:nth-child(8) { left: 85%; animation-duration: 13s; animation-delay: 7s; }
+    .heart:nth-child(9) { left: 92%; animation-duration: 15s; animation-delay: 8s; }
+
+    /* Ajustes específicos para pantallas de celular como iPhone 11 */
+    @media (max-width: 980px){
+      .scene__grid{grid-template-columns:1fr; gap: 40px;}
+      .scene{min-height:auto;padding:12px 0 20px}
+      .scene__copy{max-width:none}
+      .scene--alt .scene__grid .scene__copy{order:1}
+      .scene--alt .scene__grid .scene__media{order:2}
+      .cluster{min-height: 520px}
+      .tile--lg{width:64%;height:58%}
+      .tile--md{width:42%;height:44%}
+      .tile--sm{width:38%;height:38%}
+      .tile--xs{width:34%;height:34%}
+      .tile--wide{width:78%}
+      .tile--tall{width:32%}
+    }
+    @media (max-width: 640px){
+      .container,.scene,.closing{width:min(100vw - 20px, 1180px)}
+      .hero__card{padding:40px 20px 30px;border-radius:26px}
+      .hero__title{font-size:clamp(2.5rem, 14vw, 3.5rem)}
+      .hero__copy{font-size:1rem;line-height:1.6}
+      .scene__copy{padding:26px 20px;border-radius:24px}
+      .scene__title{font-size:clamp(2rem, 9vw, 2.7rem)}
+      .scene__text{font-size: 1rem; line-height: 1.8;}
+      .cluster{min-height: 400px}
+      .tile--lg{width:70%;height:54%}
+      .tile--md{width:46%;height:36%}
+      .tile--sm{width:40%;height:34%}
+      .tile--xs{width:38%;height:30%}
+      .tile--wide{width:84%;height:40%}
+      .tile--tall{width:36%;height:48%}
+      .music{left:16px;right:16px;justify-content:center; bottom: 20px;}
+      .btn{width:100%}
+      .hero__actions{flex-direction:column; width: 100%;}
+    }
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <div class="noise"></div>
+
+  <div class="floating-hearts">
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+    <div class="heart">❤</div>
+  </div>
+
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero__card container reveal">
+        <div class="hero__inner">
+          <div class="hero__eyebrow">Día de las Madres</div>
+          <h1 class="hero__title">Para la mujer más increíble</h1>
+          <p class="hero__copy">Una carta pensada como un recuerdo que respira: luz cálida, cristal oscuro, pétalos flotando y fotografías que se revelan con cada paso.</p>
+          <div class="hero__actions">
+            <button id="startBtn" class="btn btn--primary">Empezar a leer</button>
+            <button id="musicBtn" class="btn btn--ghost">Reproducir música</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="story">
+      <section class="scene" data-scene>
+        <div class="scene__grid">
+          <article class="scene__copy glass reveal">
+            <div class="scene__tag">El inicio</div>
+            <h2 class="scene__title">Desde el primer día, sin soltarme</h2>
+            <p class="scene__text">Ma, me pongo a pensar en todo lo que pasamos cuando estaba chiquito, con mis "problemitas" de salud y las operaciones que me tocaron, y me doy cuenta de que nunca me soltaste. Sé que te tocaron ratos bien pesados y que sufriste por verme así, pero siempre estuviste ahí para ayudarme en todo lo que pudieras, aunque eso significara que tú la pasaras mal. Desde que nací fuiste valiente, y ese amor tan incondicional es lo que me hizo ser quien soy hoy.</p>
+          </article>
+          <div class="scene__media cluster reveal" data-parallax>
+            <figure class="tile tile--lg"><img src="fotos/fotoyobebe.jpg" alt="Cuando era bebé"></figure>
+            <figure class="tile tile--md"><img src="fotos/fotoyobebe2.jpg" alt="Primeros recuerdos"></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene scene--alt" data-scene>
+        <div class="scene__grid">
+          <div class="scene__media cluster reveal" data-parallax>
+            <figure class="tile tile--wide"><img src="fotos/fotoyo2.jpg" alt="Momento especial 1"></figure>
+            <figure class="tile tile--sm"><img src="fotos/fotoyo4.jpg" alt="Momento especial 2"></figure>
+            <figure class="tile tile--md"><img src="fotos/fotoyo5.jpg" alt="Momento especial 3"></figure>
+            <figure class="tile tile--xs"><img src="fotos/fotoyo6.jpg" alt="Momento especial 4"></figure>
+          </div>
+          <article class="scene__copy glass reveal scene__copy--overlap">
+            <div class="scene__tag">Mi mayor impulso</div>
+            <h2 class="scene__title">Lo que logre es para ti</h2>
+            <p class="scene__text">Gracias por no dejar que me rindiera nunca. Si hoy le echo ganas al estudio y busco mejorar cada día, es porque tú me enseñaste que la confianza en uno mismo lo es todo. Me empujaste a soñar en grande y quiero que sepas que cada meta que cumpla, la voy a compartir contigo. Prometo cuidarte y consentirte siempre, porque quiero recompensar todo ese esfuerzo infinito que haces por mí con el mejor de los orgullos.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="scene" data-scene>
+        <div class="scene__grid">
+          <article class="scene__copy glass reveal">
+            <div class="scene__tag">Nosotros (y tus mil paciencias)</div>
+            <h2 class="scene__title">Las risas, las broncas y tu guía</h2>
+            <p class="scene__text">Sé que con Natalia y conmigo a veces te sacamos canas verdes y que nuestra paciencia se pone a prueba, pero siempre encuentras la forma de unirnos con tu amor. Gracias por aguantar todas nuestras travesuras y chiflasones, y por enseñarnos a ser mejores personas y hermanos. Aunque a veces choquemos, eres la que siempre nos marca el camino con esa mezcla de firmeza y cariño que solo tú tienes.</p>
+          </article>
+          <div class="scene__media cluster reveal" data-parallax>
+            <figure class="tile tile--lg"><img src="fotos/fotonataliayyo.jpg" alt="Natalia y yo 1"></figure>
+            <figure class="tile tile--md"><img src="fotos/fotonataliayyo2.jpg" alt="Natalia y yo 2"></figure>
+            <figure class="tile tile--sm"><img src="fotos/fotonataliayyo3.jpg" alt="Natalia y yo 3"></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="scene scene--alt" data-scene>
+        <div class="scene__grid">
+          <div class="scene__media cluster reveal" data-parallax>
+            <figure class="tile tile--wide"><img src="fotos/fotofamilia.jpg" alt="Familia 1"></figure>
+            <figure class="tile tile--tall"><img src="fotos/fotofamilia2.jpg" alt="Familia 2"></figure>
+          </div>
+          <article class="scene__copy glass reveal scene__copy--overlap">
+            <div class="scene__tag">El pilar de nuestra casa</div>
+            <h2 class="scene__title">La base de todo lo bueno</h2>
+            <p class="scene__text">Tú y pa son el centro de nuestro hogar y el pilar que nos sostiene. Gracias por regalarnos una casa llena de recuerdos, de viajes, de salidas y de enseñanzas que se me van a quedar grabadas siempre. Lo que soy hoy tiene tu huella marcada en todos lados; tu entrega diaria y todo lo que sacrificas para que no nos falte nada es lo que nos ha dado las mejores oportunidades de la vida.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="scene" data-scene>
+        <div class="scene__grid">
+          <article class="scene__copy glass reveal">
+            <div class="scene__tag">La mujer que más admiro</div>
+            <h2 class="scene__title">Eres increíble, ma (más allá de ser mamá)</h2>
+            <p class="scene__text">Ma, eres hermosa y fuerte, y te admiro por mucho más que por ser mi mamá. Sé que estos años con lo de la tiroides y el Hashimoto han sido difíciles, y me duele que a veces no te sientas bien, pero me impresiona cómo le sigues dando con todo a la vida. Eres perfecta tal como eres: con tus cambios de humor, tus regaños y hasta con tus "chiflasones". Sabemos que cuando nos regañas es porque nos quieres y buscas lo mejor para nosotros. Me hace muy feliz que te hayas convertido en mi mamá; eres y seguirás siendo mi mayor inspiración para cumplir mis metas. ¡Te amamos, ma!</p>
+          </article>
+          <div class="scene__media cluster reveal" data-parallax>
+            <figure class="tile tile--lg"><img src="fotos/foto1.jpg" alt="Mamá 1"></figure>
+            <figure class="tile tile--md"><img src="fotos/foto2.jpg" alt="Mamá 2"></figure>
+            <figure class="tile tile--sm"><img src="fotos/foto3.jpg" alt="Mamá 3"></figure>
+            <figure class="tile tile--xs"><img src="fotos/foto5.jpg" alt="Mamá 4"></figure>
+          </div>
+        </div>
+      </section>
+
+      <div class="closing">
+        <p class="closing__line reveal">Gracias por darnos amor, paciencia y una casa llena de recuerdos. Todo lo bueno que somos lleva tu nombre mami.</p>
+        <h2 class="closing__title reveal">¡Feliz Día de las Madres, te amamos!</h2>
+      </div>
+    </main>
+  </div>
+
+  <audio id="bgMusic" loop preload="none"></audio>
+  <div class="music">
+    <button id="musicToggleBtn" type="button">Música opcional</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js"></script>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    const revealEls = document.querySelectorAll('.reveal');
+    gsap.set(revealEls, { opacity: 0, y: 28, scale: 0.98 });
+
+    revealEls.forEach((el) => {
+      gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 1.05,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-scene]').forEach((scene, index) => {
+      const copy = scene.querySelector('.scene__copy');
+      const media = scene.querySelector('.scene__media');
+      const tiles = scene.querySelectorAll('.tile');
+
+      // Animación responsiva (en celular solo hacemos fade-up, sin slide lateral para que no se vea raro)
+      let isMobile = window.innerWidth <= 980;
+      let startX = isMobile ? 0 : (index % 2 === 0 ? -70 : 70);
+      let startY = isMobile ? 30 : 0;
+
+      gsap.fromTo(copy, { x: startX, y: startY, opacity: 0 }, {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: scene,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          scrub: 0.5
+        }
+      });
+
+      gsap.fromTo(media, { opacity: 0 }, {
+        opacity: 1,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: scene,
+          start: 'top 85%',
+          end: 'top 35%',
+          scrub: true
+        }
+      });
+
+      tiles.forEach((tile, tileIndex) => {
+        const direction = tileIndex % 2 === 0 ? -1 : 1;
+        gsap.fromTo(tile, {
+          yPercent: 16 + tileIndex * 3,
+          xPercent: direction * (6 + tileIndex * 2),
+          scale: 0.82,
+          rotateZ: direction * (8 - tileIndex * 2),
+          rotateX: 12 + tileIndex * 2,
+          opacity: 0
+        }, {
+          yPercent: -12 - tileIndex * 4,
+          xPercent: direction * -3,
+          scale: 1,
+          rotateZ: direction * (2 - tileIndex),
+          rotateX: 0,
+          opacity: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: scene,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: 1.1
+          }
+        });
+      });
+    });
+
+    gsap.fromTo('.hero__card',
+      { y: 28, opacity: 0, scale: 0.985 },
+      { y: 0, opacity: 1, scale: 1, duration: 1.3, ease: 'power4.out', delay: 0.12 }
+    );
+
+    const bgMusic = document.getElementById('bgMusic');
+    const musicToggleBtn = document.getElementById('musicToggleBtn');
+    const musicBtn = document.getElementById('musicBtn');
+    const startBtn = document.getElementById('startBtn');
+
+    function tryPlayMusic() {
+      if (!bgMusic.src || bgMusic.src === window.location.href) {
+        bgMusic.src = 'Carlos_Rivera_-_Eres_T_Mam__CeeNaija.com_.mp3';
+      }
+      bgMusic.play().then(() => {
+        musicToggleBtn.textContent = 'Pausar música';
+        musicBtn.textContent = 'Pausar música';
+      }).catch((e) => {
+        console.log("Audio play blocked by browser", e);
+      });
+    }
+
+    function toggleAudio() {
+      if (!bgMusic.src || bgMusic.src === window.location.href) {
+        tryPlayMusic();
+        return;
+      }
+      if (bgMusic.paused) {
+        tryPlayMusic();
+      } else {
+        bgMusic.pause();
+        musicToggleBtn.textContent = 'Reproducir música';
+        musicBtn.textContent = 'Reproducir música';
+      }
+    }
+
+    musicToggleBtn.addEventListener('click', toggleAudio);
+    musicBtn.addEventListener('click', toggleAudio);
+
+    startBtn.addEventListener('click', () => {
+      document.querySelector('.story').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+
+    tsParticles.load('particles-js', {
+      fullScreen: { enable: false },
+      background: { color: { value: 'transparent' } },
+      fpsLimit: 60,
+      detectRetina: true,
+      particles: {
+        number: { value: 42, density: { enable: true, area: 900 } },
+        color: { value: ['#ff5f5f', '#f4c97a', '#ffb08f'] },
+        shape: {
+          type: ['circle', 'char'],
+          options: {
+            char: {
+              value: ['❀', '✦', '✧'],
+              font: '16px serif',
+              style: '',
+              weight: '400'
+            }
+          }
+        },
+        opacity: {
+          value: { min: 0.28, max: 0.85 },
+          animation: { enable: true, speed: 1.4, sync: false }
+        },
+        size: {
+          value: { min: 1.8, max: 5.5 },
+          animation: { enable: true, speed: 2.4, sync: false }
+        },
+        links: { enable: false },
+        move: {
+          enable: true,
+          direction: 'bottom',
+          speed: 1.15,
+          random: true,
+          straight: false,
+          outModes: { default: 'out' }
+        }
+      },
+      emitters: [{
+        position: { x: 50, y: -10 },
+        rate: { quantity: 2, delay: 0.35 },
+        particles: {
+          move: { direction: 'bottom', speed: 1.2 },
+          color: { value: ['#ff6e6e', '#f4c97a'] },
+          size: { value: { min: 2, max: 4 } },
+          shape: { type: ['char'], options: { char: { value: ['✦', '✧'], font: '14px serif', weight: '400' } } }
+        }
+      }]
+    });
+
+    ScrollTrigger.refresh();
+  </script>
+</body>
+</html>
