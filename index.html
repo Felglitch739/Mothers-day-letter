@@ -111,6 +111,7 @@
       display:flex;
       flex-direction: column;
       align-items: center;
+      gap:8px;
       max-width: 800px;
       margin: 0 auto;
     }
@@ -347,34 +348,69 @@
 
     /* Ajustes específicos para pantallas de celular como iPhone 11 */
     @media (max-width: 980px){
-      .scene__grid{grid-template-columns:1fr; gap: 40px;}
+      .scene__grid{
+        display:flex;
+        flex-direction:column;
+        gap:24px;
+      }
       .scene{min-height:auto;padding:12px 0 20px}
-      .scene__copy{max-width:none}
-      .scene--alt .scene__grid .scene__copy{order:1}
-      .scene--alt .scene__grid .scene__media{order:2}
-      .cluster{min-height: 520px}
-      .tile--lg{width:64%;height:58%}
-      .tile--md{width:42%;height:44%}
-      .tile--sm{width:38%;height:38%}
-      .tile--xs{width:34%;height:34%}
-      .tile--wide{width:78%}
-      .tile--tall{width:32%}
+      .scene__copy{
+        max-width:none;
+        width:100%;
+      }
+      .scene__media{
+        width:100%;
+      }
+      .scene--alt .scene__grid .scene__copy{order:0}
+      .scene--alt .scene__grid .scene__media{order:1}
+      .cluster{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:14px;
+        min-height:auto;
+        margin-top:14px;
+        padding-top:10px;
+      }
+      .tile{
+        position:relative;
+        left:auto;
+        right:auto;
+        top:auto;
+        bottom:auto;
+        width:100%;
+        height:190px;
+      }
+      .tile--lg,
+      .tile--wide,
+      .tile--tall{
+        grid-column:auto;
+        height:220px;
+      }
+      .tile--md,
+      .tile--sm,
+      .tile--xs{
+        height:190px;
+      }
+      .tile img{width:100%;height:100%;object-fit:cover}
+      .scene__media .tile{transform:none !important}
     }
     @media (max-width: 640px){
       .container,.scene,.closing{width:min(100vw - 20px, 1180px)}
-      .hero__card{padding:40px 20px 30px;border-radius:26px}
+      .hero{padding:18px 0 40px}
+      .hero__card{padding:32px 18px 24px;border-radius:26px}
+      .hero__inner{max-width:none}
+      .hero__eyebrow{padding:7px 12px;letter-spacing:.14em}
       .hero__title{font-size:clamp(2.5rem, 14vw, 3.5rem)}
-      .hero__copy{font-size:1rem;line-height:1.6}
+      .hero__copy{font-size:.98rem;line-height:1.65}
+      .hero__actions{margin-top:22px}
       .scene__copy{padding:26px 20px;border-radius:24px}
       .scene__title{font-size:clamp(2rem, 9vw, 2.7rem)}
       .scene__text{font-size: 1rem; line-height: 1.8;}
-      .cluster{min-height: 400px}
-      .tile--lg{width:70%;height:54%}
-      .tile--md{width:46%;height:36%}
-      .tile--sm{width:40%;height:34%}
-      .tile--xs{width:38%;height:30%}
-      .tile--wide{width:84%;height:40%}
-      .tile--tall{width:36%;height:48%}
+      .cluster{margin-top:14px;padding-top:10px}
+      .tile{height:172px;border-radius:22px}
+      .tile--lg,
+      .tile--wide,
+      .tile--tall{height:208px}
       .music{left:16px;right:16px;justify-content:center; bottom: 20px;}
       .btn{width:100%}
       .hero__actions{flex-direction:column; width: 100%;}
